@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -9,12 +9,24 @@ import {
 } from "react-native";
 
 export default function AddLocationsPage() {
+  const [title, setTitle] = useState("");
+
+  const titleChangeHandler = (text) => {
+    setTitle(text);
+  };
+
+  const saveLocationHandler = () => {};
+
   return (
     <ScrollView>
       <View style={styles.form}>
         <Text style={styles.label}>Title</Text>
-        <TextInput style={styles.textInput} />
-        <Button title="Save Location" onPress={() => {}} />
+        <TextInput
+          style={styles.textInput}
+          onChangeText={titleChangeHandler}
+          value={title}
+        />
+        <Button title="Save Location" onPress={saveLocationHandler} />
       </View>
     </ScrollView>
   );
