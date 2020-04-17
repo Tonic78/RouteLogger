@@ -7,15 +7,22 @@ import {
   ScrollView,
   Button,
 } from "react-native";
+import { useDispatch } from "react-redux";
+import { addLocation } from "../store/locations/actions";
 
-export default function AddLocationsPage() {
+export default function AddLocationsPage(props) {
   const [title, setTitle] = useState("");
+
+  const dispatch = useDispatch();
 
   const titleChangeHandler = (text) => {
     setTitle(text);
   };
 
-  const saveLocationHandler = () => {};
+  const saveLocationHandler = () => {
+    dispatch(addLocation(title));
+    props.navigation.goBack();
+  };
 
   return (
     <ScrollView>
