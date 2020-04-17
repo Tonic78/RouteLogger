@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Stylesheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 export default function LocationsPage() {
   return (
@@ -9,4 +9,8 @@ export default function LocationsPage() {
   );
 }
 
-const styles = Stylesheet.create({});
+LocationsPage.navigationOptions = {
+  headerTitle: "Every Location",
+};
+
+const styles = StyleSheet.create({});
