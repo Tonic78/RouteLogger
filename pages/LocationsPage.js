@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 
-export default function LocationsPage() {
+export default function LocationsPage({ navigation }) {
   return (
     <View>
       <Text>List of Locactions on this page</Text>
+      <Button
+        title="Add Location"
+        onPress={() => navigation.navigate("AddLocation")}
+      />
     </View>
   );
 }
-
-LocationsPage.navigationOptions = {
-  headerTitle: "Every Location",
-};
 
 const styles = StyleSheet.create({});
