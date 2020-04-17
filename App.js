@@ -1,6 +1,7 @@
 import React from "react";
-import { View } from "react-native";
+
+import LocationsNavigator from "./navigation/LocationsNavigator";
 
 export default function App() {
-  return <View style={styles.container}></View>;
+  return <LocationsNavigator />;
 }
