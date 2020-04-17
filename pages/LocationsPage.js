@@ -9,8 +9,4 @@ export default function LocationsPage() {
   );
 }
 
-LocationsPage.navigationOptions = {
-  headerTitle: "Every Location",
-};
-
 const styles = StyleSheet.create({});
