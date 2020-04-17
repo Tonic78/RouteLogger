@@ -20,7 +20,11 @@ export default function LocationsNavigator() {
           options={{ title: "Every Location" }}
         />
         <Stack.Screen name="LocationDetail" component={LocationDetailPage} />
-        <Stack.Screen name="AddLocation" component={AddLocationPage} />
+        <Stack.Screen
+          name="AddLocation"
+          component={AddLocationPage}
+          options={{ title: "Add a Location" }}
+        />
         <Stack.Screen name="Map" component={MapPage} />
       </Stack.Navigator>
     </NavigationContainer>
