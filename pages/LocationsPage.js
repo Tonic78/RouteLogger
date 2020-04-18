@@ -30,7 +30,7 @@ export default function LocationsPage(props) {
         keyExtractor={(item) => item.id}
         renderItem={(itemData) => (
           <LocationItem
-            // image={null}
+            image={itemData.item.imageUri}
             title={itemData.item.title}
             // address={null}
             onSelect={() => {

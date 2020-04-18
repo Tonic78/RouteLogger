@@ -13,6 +13,7 @@ import TakeImage from "../components/TakeImage";
 
 export default function AddLocationsPage(props) {
   const [title, setTitle] = useState("");
+  const [selectedImage, setSelectedImage] = useState();
 
   const dispatch = useDispatch();
 
@@ -20,8 +21,12 @@ export default function AddLocationsPage(props) {
     setTitle(text);
   };
 
+  const imageTakenHandler = (imagePath) => {
+    setSelectedImage(imagePath);
+  };
+
   const saveLocationHandler = () => {
-    dispatch(addLocation(title));
+    dispatch(addLocation(title, selectedImage));
     props.navigation.goBack();
   };
 
@@ -34,7 +39,7 @@ export default function AddLocationsPage(props) {
           onChangeText={titleChangeHandler}
           value={title}
         />
-        <TakeImage />
+        <TakeImage onImageTaken={imageTakenHandler} />
         <Button title="Save Location" onPress={saveLocationHandler} />
       </View>
     </ScrollView>
