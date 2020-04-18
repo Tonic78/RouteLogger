@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useDispatch } from "react-redux";
 import { addLocation } from "../store/locations/actions";
+import TakeImage from "../components/TakeImage";
 
 export default function AddLocationsPage(props) {
   const [title, setTitle] = useState("");
@@ -33,6 +34,7 @@ export default function AddLocationsPage(props) {
           onChangeText={titleChangeHandler}
           value={title}
         />
+        <TakeImage />
         <Button title="Save Location" onPress={saveLocationHandler} />
       </View>
     </ScrollView>
