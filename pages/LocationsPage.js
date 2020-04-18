@@ -14,7 +14,6 @@ import LocationItem from "../components/LocationItem";
 
 export default function LocationsPage(props) {
   const locations = useSelector(selectLocations);
-  console.log("what is locations", locations);
 
   const addLocationHandler = () => {
     props.navigation.navigate("AddLocation");
