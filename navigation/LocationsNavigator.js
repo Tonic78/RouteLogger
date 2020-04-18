@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -17,7 +18,9 @@ export default function LocationsNavigator() {
         <Stack.Screen
           name="Locations"
           component={LocationsPage}
-          options={{ title: "Every Location" }}
+          options={{
+            headerTitle: "Every Location",
+          }}
         />
         <Stack.Screen name="LocationDetail" component={LocationDetailPage} />
         <Stack.Screen

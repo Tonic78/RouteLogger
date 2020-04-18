@@ -1,6 +1,5 @@
 export const ADD_LOCATION = "ADD_LOCATION";
 
-export const addLocation = (title) => ({
-  type: ADD_LOCATION,
-  payload: title,
-});
+export const addLocation = (title) => {
+  return { type: ADD_LOCATION, locationData: { title: title } };
+};
