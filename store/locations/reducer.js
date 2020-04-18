@@ -10,7 +10,8 @@ export default (state = initialState, action) => {
     case ADD_LOCATION:
       const newLocation = new Location(
         new Date().toString(),
-        action.locationData.title
+        action.locationData.title,
+        action.locationData.image
       );
       return {
         locations: state.locations.concat(newLocation),
