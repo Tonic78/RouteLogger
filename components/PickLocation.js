@@ -34,7 +34,7 @@ export default function PickLocation(props) {
     }
     try {
       setIsFetching(true);
-      const loaction = await Location.getCurrentPositionAsync({
+      const location = await Location.getCurrentPositionAsync({
         timeout: 5000,
       });
       console.log("what is location", location);
