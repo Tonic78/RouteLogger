@@ -10,6 +10,7 @@ import {
 import { useDispatch } from "react-redux";
 import { addLocation } from "../store/locations/actions";
 import TakeImage from "../components/TakeImage";
+import PickLocation from "../components/PickLocation";
 
 export default function AddLocationsPage(props) {
   const [title, setTitle] = useState("");
@@ -40,6 +41,7 @@ export default function AddLocationsPage(props) {
           value={title}
         />
         <TakeImage onImageTaken={imageTakenHandler} />
+        <PickLocation />
         <Button title="Save Location" onPress={saveLocationHandler} />
       </View>
     </ScrollView>
