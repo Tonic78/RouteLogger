@@ -6,13 +6,14 @@ import {
   ActivityIndicator,
   Alert,
   StyleSheet,
+  ShadowPropTypesIOS,
 } from "react-native";
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import MapPreview from "./MapPreview";
 
-export default function PickLocation({ navigation, route }) {
-  console.log("what is route", route);
+export default function PickLocation({ navigation, route, props }) {
+  // console.log("what is props", props);
 
   useEffect(() => {
     if (route.params) {
@@ -20,8 +21,9 @@ export default function PickLocation({ navigation, route }) {
         latitude: route.params.pickedLocation.latitude,
         longitude: route.params.pickedLocation.longitude,
       };
-      console.log("what is selectedCoordinates", selectedCoordinates);
+      // console.log("what is selectedCoordinates", selectedCoordinates);
       setPickedLocation(selectedCoordinates);
+      // props.onLocationPicked(selectedCoordinates);
     }
   }, [route.params]);
 
@@ -53,6 +55,10 @@ export default function PickLocation({ navigation, route }) {
       });
 
       setPickedLocation({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      });
+      props.onLocationPicked({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
       });

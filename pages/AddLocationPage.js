@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -17,6 +17,18 @@ export default function AddLocationsPage(props) {
 
   const [title, setTitle] = useState("");
   const [selectedImage, setSelectedImage] = useState();
+  const [selectedLocation, setSelectedLocation] = useState();
+
+  useEffect(() => {
+    if (props.route.params) {
+      const pickedCoordinates = {
+        latitude: props.route.params.pickedLocation.latitude,
+        longitude: props.route.params.pickedLocation.longitude,
+      };
+      // console.log("what is pickedCoordinates", pickedCoordinates);
+      setSelectedLocation(pickedCoordinates);
+    }
+  }, [props.params]);
 
   const dispatch = useDispatch();
 
@@ -29,7 +41,7 @@ export default function AddLocationsPage(props) {
   };
 
   const saveLocationHandler = () => {
-    dispatch(addLocation(title, selectedImage));
+    dispatch(addLocation(title, selectedImage, selectedLocation));
     props.navigation.goBack();
   };
 
