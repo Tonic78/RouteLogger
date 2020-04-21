@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
+import MapPreview from "./MapPreview";
 
 export default function PickLocation(props) {
   const [pickedLocation, setPickedLocation] = useState();
@@ -37,7 +38,7 @@ export default function PickLocation(props) {
       const location = await Location.getCurrentPositionAsync({
         timeout: 5000,
       });
-      console.log("what is location", location);
+
       setPickedLocation({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
@@ -52,13 +53,13 @@ export default function PickLocation(props) {
 
   return (
     <View style={styles.pickLocation}>
-      <View style={styles.mapPreview}>
+      <MapPreview location={pickedLocation}>
         {isFetching ? (
           <ActivityIndicator size="large" color="blue" />
         ) : (
           <Text>Ckoose your location!</Text>
         )}
-      </View>
+      </MapPreview>
       <Button
         title="Get User Location"
         color="blue"
@@ -71,14 +72,5 @@ export default function PickLocation(props) {
 const styles = StyleSheet.create({
   pickLocation: {
     marginBottom: 15,
-  },
-  mapPreview: {
-    marginBottom: 10,
-    width: "100%",
-    height: 150,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
