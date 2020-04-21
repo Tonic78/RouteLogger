@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -11,7 +11,20 @@ import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import MapPreview from "./MapPreview";
 
-export default function PickLocation(props) {
+export default function PickLocation({ navigation, route }) {
+  console.log("what is route", route);
+
+  useEffect(() => {
+    if (route.params) {
+      const selectedCoordinates = {
+        latitude: route.params.pickedLocation.latitude,
+        longitude: route.params.pickedLocation.longitude,
+      };
+      console.log("what is selectedCoordinates", selectedCoordinates);
+      setPickedLocation(selectedCoordinates);
+    }
+  }, [route.params]);
+
   const [pickedLocation, setPickedLocation] = useState();
   const [isFetching, setIsFetching] = useState(false);
 
@@ -52,7 +65,7 @@ export default function PickLocation(props) {
   };
 
   const chooseLocationHandler = () => {
-    props.navigation.navigate("Map");
+    navigation.navigate("Map");
   };
 
   return (

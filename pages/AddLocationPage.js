@@ -13,6 +13,8 @@ import TakeImage from "../components/TakeImage";
 import PickLocation from "../components/PickLocation";
 
 export default function AddLocationsPage(props) {
+  console.log("what is addlocation props", props.route);
+
   const [title, setTitle] = useState("");
   const [selectedImage, setSelectedImage] = useState();
 
@@ -41,7 +43,7 @@ export default function AddLocationsPage(props) {
           value={title}
         />
         <TakeImage onImageTaken={imageTakenHandler} />
-        <PickLocation navigation={props.navigation} />
+        <PickLocation navigation={props.navigation} route={props.route} />
         <Button title="Save Location" onPress={saveLocationHandler} />
       </View>
     </ScrollView>

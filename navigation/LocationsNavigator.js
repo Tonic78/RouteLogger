@@ -19,7 +19,7 @@ export default function LocationsNavigator() {
           name="Locations"
           component={LocationsPage}
           options={{
-            headerTitle: "Every Location",
+            headerTitle: "All Locations",
           }}
         />
         <Stack.Screen name="LocationDetail" component={LocationDetailPage} />
