@@ -51,6 +51,10 @@ export default function PickLocation(props) {
     setIsFetching(false);
   };
 
+  const chooseLocationHandler = () => {
+    props.navigation.navigate("Map");
+  };
+
   return (
     <View style={styles.pickLocation}>
       <MapPreview location={pickedLocation}>
@@ -60,11 +64,18 @@ export default function PickLocation(props) {
           <Text>Ckoose your location!</Text>
         )}
       </MapPreview>
-      <Button
-        title="Get User Location"
-        color="blue"
-        onPress={getLocationHandler}
-      />
+      <View style={styles.buttoncontainer}>
+        <Button
+          title="Get User Location"
+          color="blue"
+          onPress={getLocationHandler}
+        />
+        <Button
+          title="Choose Location"
+          color="blue"
+          onPress={chooseLocationHandler}
+        />
+      </View>
     </View>
   );
 }
@@ -72,5 +83,10 @@ export default function PickLocation(props) {
 const styles = StyleSheet.create({
   pickLocation: {
     marginBottom: 15,
+  },
+  buttoncontainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
   },
 });
