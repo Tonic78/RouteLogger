@@ -6,8 +6,8 @@ export default function MapPage() {
   const mapRegion = {
     latitude: 52.379189,
     longitude: 4.899431,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
+    latitudeDelta: 0.06,
+    longitudeDelta: 0.04,
   };
 
   return <MapView style={styles.map} region={mapRegion} />;
