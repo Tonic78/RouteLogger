@@ -10,7 +10,13 @@ export default function MapPage() {
     longitudeDelta: 0.04,
   };
 
-  return <MapView style={styles.map} region={mapRegion} />;
+  return (
+    <MapView
+      style={styles.map}
+      provider={MapView.PROVIDER_GOOGLE}
+      region={mapRegion}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
