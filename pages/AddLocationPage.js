@@ -41,7 +41,7 @@ export default function AddLocationsPage(props) {
           value={title}
         />
         <TakeImage onImageTaken={imageTakenHandler} />
-        <PickLocation />
+        <PickLocation navigation={props.navigation} />
         <Button title="Save Location" onPress={saveLocationHandler} />
       </View>
     </ScrollView>
