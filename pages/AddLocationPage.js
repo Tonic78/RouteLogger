@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -13,8 +13,22 @@ import TakeImage from "../components/TakeImage";
 import PickLocation from "../components/PickLocation";
 
 export default function AddLocationsPage(props) {
+  console.log("what is addlocation props", props.route);
+
   const [title, setTitle] = useState("");
   const [selectedImage, setSelectedImage] = useState();
+  const [selectedLocation, setSelectedLocation] = useState();
+
+  useEffect(() => {
+    if (props.route.params) {
+      const pickedCoordinates = {
+        latitude: props.route.params.pickedLocation.latitude,
+        longitude: props.route.params.pickedLocation.longitude,
+      };
+      // console.log("what is pickedCoordinates", pickedCoordinates);
+      setSelectedLocation(pickedCoordinates);
+    }
+  }, [props.params]);
 
   const dispatch = useDispatch();
 
@@ -27,7 +41,7 @@ export default function AddLocationsPage(props) {
   };
 
   const saveLocationHandler = () => {
-    dispatch(addLocation(title, selectedImage));
+    dispatch(addLocation(title, selectedImage, selectedLocation));
     props.navigation.goBack();
   };
 
@@ -41,7 +55,7 @@ export default function AddLocationsPage(props) {
           value={title}
         />
         <TakeImage onImageTaken={imageTakenHandler} />
-        <PickLocation navigation={props.navigation} />
+        <PickLocation navigation={props.navigation} route={props.route} />
         <Button title="Save Location" onPress={saveLocationHandler} />
       </View>
     </ScrollView>

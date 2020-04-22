@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,12 +6,27 @@ import {
   ActivityIndicator,
   Alert,
   StyleSheet,
+  ShadowPropTypesIOS,
 } from "react-native";
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import MapPreview from "./MapPreview";
 
-export default function PickLocation(props) {
+export default function PickLocation({ navigation, route, props }) {
+  // console.log("what is props", props);
+
+  useEffect(() => {
+    if (route.params) {
+      const selectedCoordinates = {
+        latitude: route.params.pickedLocation.latitude,
+        longitude: route.params.pickedLocation.longitude,
+      };
+      // console.log("what is selectedCoordinates", selectedCoordinates);
+      setPickedLocation(selectedCoordinates);
+      // props.onLocationPicked(selectedCoordinates);
+    }
+  }, [route.params]);
+
   const [pickedLocation, setPickedLocation] = useState();
   const [isFetching, setIsFetching] = useState(false);
 
@@ -43,6 +58,10 @@ export default function PickLocation(props) {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
       });
+      props.onLocationPicked({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      });
     } catch (error) {
       Alert.alert("Not able to get location", "Pick a location on the map", [
         { text: "Okay" },
@@ -52,7 +71,7 @@ export default function PickLocation(props) {
   };
 
   const chooseLocationHandler = () => {
-    props.navigation.navigate("Map");
+    navigation.navigate("Map");
   };
 
   return (
