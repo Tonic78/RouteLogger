@@ -1,12 +1,8 @@
 import * as FileSystem from "expo-file-system";
-import { insertLocation } from "../../database";
+import { insertLocation, fetchLocations } from "../../database";
 
 export const ADD_LOCATION = "ADD_LOCATION";
-
-// export const locationsInsert = (location) => ({
-//   type: ADD_LOCATION,
-//   locationData: location,
-// });
+export const SHOW_LOCATIONS = "SHOW_LOCATIONS";
 
 export const addLocation = (title, selectedImage) => {
   return async (dispatch) => {
@@ -36,6 +32,18 @@ export const addLocation = (title, selectedImage) => {
       });
     } catch (error) {
       console.log(error);
+      throw error;
+    }
+  };
+};
+
+export const displayLocations = () => {
+  return async (dispatch) => {
+    try {
+      const databaseResult = await fetchLocations();
+      console.log(databaseResult);
+      dispatch({ type: SHOW_LOCATIONS, locations: databaseResult.rows._array });
+    } catch (error) {
       throw error;
     }
   };

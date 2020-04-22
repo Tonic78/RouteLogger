@@ -43,3 +43,21 @@ export const insertLocation = (
   });
   return promise;
 };
+
+export const fetchLocations = () => {
+  const promise = new Promise((resolve, reject) => {
+    dataBase.transaction((tx) => {
+      tx.executeSql(
+        "SELECT * FROM locations",
+        [],
+        (_, result) => {
+          resolve(result);
+        },
+        (_, error) => {
+          reject(error);
+        }
+      );
+    });
+  });
+  return promise;
+};
