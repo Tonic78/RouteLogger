@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_LOCATION:
       const newLocation = new Location(
-        new Date().toString(),
+        action.locationData.id.toString(),
         action.locationData.title,
         action.locationData.image
       );

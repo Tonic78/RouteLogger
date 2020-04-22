@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 const LocationItem = (props) => {
-  console.log("what is props", props);
+  // console.log("what is props", props);
   return (
     <TouchableOpacity onPress={props.onSelect} style={styles.loactionItem}>
       <Image style={styles.image} source={{ uri: props.image }} />

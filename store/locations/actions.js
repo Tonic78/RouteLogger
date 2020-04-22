@@ -3,10 +3,10 @@ import { insertLocation } from "../../database";
 
 export const ADD_LOCATION = "ADD_LOCATION";
 
-export const locationsInsert = (location) => ({
-  type: ADD_LOCATION,
-  locationData: location,
-});
+// export const locationsInsert = (location) => ({
+//   type: ADD_LOCATION,
+//   locationData: location,
+// });
 
 export const addLocation = (title, selectedImage) => {
   return async (dispatch) => {
@@ -25,8 +25,15 @@ export const addLocation = (title, selectedImage) => {
         15.6,
         12.3
       );
-      console.log(databaseResult);
-      dispatch(locationsInsert(databaseResult));
+      console.log("what is databaseresult", databaseResult);
+      dispatch({
+        type: ADD_LOCATION,
+        locationData: {
+          id: databaseResult.insertId,
+          title: title,
+          image: newPath,
+        },
+      });
     } catch (error) {
       console.log(error);
       throw error;
