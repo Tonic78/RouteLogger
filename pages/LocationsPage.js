@@ -1,19 +1,18 @@
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  FlatList,
-  ShadowPropTypesIOS,
-} from "react-native";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, Button, FlatList } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 import { selectLocations } from "../store/locations/selectors";
 
 import LocationItem from "../components/LocationItem";
+import { displayLocations } from "../store/locations/actions";
 
 export default function LocationsPage(props) {
   const locations = useSelector(selectLocations);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(displayLocations());
+  }, [dispatch]);
 
   const addLocationHandler = () => {
     props.navigation.navigate("AddLocation");

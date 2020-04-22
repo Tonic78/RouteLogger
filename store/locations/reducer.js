@@ -1,4 +1,4 @@
-import { ADD_LOCATION } from "./actions";
+import { ADD_LOCATION, SHOW_LOCATIONS } from "./actions";
 import Location from "../../models/Location";
 
 const initialState = {
@@ -7,9 +7,20 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case SHOW_LOCATIONS:
+      return {
+        locations: action.locations.map(
+          (location) =>
+            new Location(
+              location.id.toString(),
+              location.title,
+              location.imageUri
+            )
+        ),
+      };
     case ADD_LOCATION:
       const newLocation = new Location(
-        new Date().toString(),
+        action.locationData.id.toString(),
         action.locationData.title,
         action.locationData.image
       );
