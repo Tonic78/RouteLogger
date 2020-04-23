@@ -32,6 +32,8 @@ export default function LocationsPage(props) {
             image={itemData.item.imageUri}
             title={itemData.item.title}
             // address={null}
+            latitude={itemData.item.latitude}
+            longitude={itemData.item.longitude}
             onSelect={() => {
               props.navigation.navigate("LocationDetail", {
                 locationTitle: itemData.item.title,

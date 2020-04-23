@@ -6,15 +6,12 @@ import {
   ActivityIndicator,
   Alert,
   StyleSheet,
-  ShadowPropTypesIOS,
 } from "react-native";
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import MapPreview from "./MapPreview";
 
-export default function PickLocation({ navigation, route, props }) {
-  // console.log("what is props", props);
-
+export default function PickLocation({ navigation, route }) {
   useEffect(() => {
     if (route.params) {
       const selectedCoordinates = {
@@ -23,11 +20,10 @@ export default function PickLocation({ navigation, route, props }) {
       };
       // console.log("what is selectedCoordinates", selectedCoordinates);
       setPickedLocation(selectedCoordinates);
-      // props.onLocationPicked(selectedCoordinates);
     }
   }, [route.params]);
 
-  const [pickedLocation, setPickedLocation] = useState();
+  const [pickedLocation, setPickedLocation] = useState({});
   const [isFetching, setIsFetching] = useState(false);
 
   const verifyPermissions = async () => {
@@ -53,12 +49,8 @@ export default function PickLocation({ navigation, route, props }) {
       const location = await Location.getCurrentPositionAsync({
         timeout: 5000,
       });
-
+      // console.log("what is location.....", location);
       setPickedLocation({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      });
-      props.onLocationPicked({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
       });

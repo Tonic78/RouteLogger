@@ -14,7 +14,9 @@ export default (state = initialState, action) => {
             new Location(
               location.id.toString(),
               location.title,
-              location.imageUri
+              location.imageUri,
+              location.latitude,
+              location.longitude
             )
         ),
       };
@@ -22,7 +24,9 @@ export default (state = initialState, action) => {
       const newLocation = new Location(
         action.locationData.id.toString(),
         action.locationData.title,
-        action.locationData.image
+        action.locationData.image,
+        action.locationData.coords.latitude,
+        action.locationData.coords.longitude
       );
       return {
         locations: state.locations.concat(newLocation),
