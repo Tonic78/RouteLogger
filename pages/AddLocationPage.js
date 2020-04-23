@@ -13,7 +13,7 @@ import TakeImage from "../components/TakeImage";
 import PickLocation from "../components/PickLocation";
 
 export default function AddLocationsPage(props) {
-  // console.log("what is addlocation props.route", props.route);
+  // console.log("what is ADD PAGE props.route", props.route);
 
   const [title, setTitle] = useState("");
   const [selectedImage, setSelectedImage] = useState();
@@ -25,10 +25,10 @@ export default function AddLocationsPage(props) {
         latitude: props.route.params.pickedLocation.latitude,
         longitude: props.route.params.pickedLocation.longitude,
       };
-      // console.log("what is pickedCoordinates", pickedCoordinates);
+      // console.log("what is ADD PAGE pickedCoordinates", pickedCoordinates);
       setSelectedLocation(pickedCoordinates);
     }
-  }, [props.params]);
+  }, [props.route.params]);
 
   // console.log("what is ADDLOCATION selectedLocation", selectedLocation);
 

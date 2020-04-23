@@ -50,18 +50,6 @@ export default function MapPage(props) {
   );
 }
 
-// MapPage.navigationOptions = (navData) => {
-//   console.log("what is navData", navData);
-//   const saveFN = navData.route.params(saveSelectedLocationHandler);
-//   return {
-//     headerRight: (
-//       <TouchableOpacity style={styles.headerButton} onPress={saveFN}>
-//         <Text style={styles.headerButtonText}>Save</Text>
-//       </TouchableOpacity>
-//     ),
-//   };
-// };
-
 const styles = StyleSheet.create({
   map: {
     flex: 1,
