@@ -10,8 +10,15 @@ import {
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import MapPreview from "./MapPreview";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
-export default function PickLocation({ navigation, route }) {
+export default function PickLocation(props) {
+  // console.log("what is PCK LOC props", props);
+
+  const navigation = useNavigation();
+  const route = useRoute();
+  // console.log("what is PCK LOC route", route);
+
   const [pickedLocation, setPickedLocation] = useState({});
   const [isFetching, setIsFetching] = useState(false);
 
@@ -49,11 +56,12 @@ export default function PickLocation({ navigation, route }) {
       const location = await Location.getCurrentPositionAsync({
         timeout: 5000,
       });
-      // console.log("what is location.....", location);
+      // console.log("what is PCK locationHandler", location);
       setPickedLocation({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
       });
+      props.onGetLocation(location);
     } catch (error) {
       Alert.alert("Not able to get location", "Pick a location on the map", [
         { text: "Okay" },
@@ -61,6 +69,8 @@ export default function PickLocation({ navigation, route }) {
     }
     setIsFetching(false);
   };
+
+  // console.log("what is PCK pickedLocation", pickedLocation);
 
   const chooseLocationHandler = () => {
     navigation.navigate("Map");

@@ -3,6 +3,7 @@ import { View, Image, StyleSheet } from "react-native";
 import { KEY } from "react-native-dotenv";
 
 export default function MapPreview(props) {
+  // console.log("what is MAPPRV props.location", props.children);
   let imagePreviewUrl;
   if (props.location) {
     imagePreviewUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${props.location.latitude},${props.location.longitude}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:A%7C${props.location.latitude},${props.location.longitude}&key=${KEY}`;
