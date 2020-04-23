@@ -12,19 +12,19 @@ import * as Permissions from "expo-permissions";
 import MapPreview from "./MapPreview";
 
 export default function PickLocation({ navigation, route }) {
+  const [pickedLocation, setPickedLocation] = useState({});
+  const [isFetching, setIsFetching] = useState(false);
+
   useEffect(() => {
     if (route.params) {
       const selectedCoordinates = {
         latitude: route.params.pickedLocation.latitude,
         longitude: route.params.pickedLocation.longitude,
       };
-      // console.log("what is selectedCoordinates", selectedCoordinates);
+      // console.log("what is PICK LOC selectedCoordinates", selectedCoordinates);
       setPickedLocation(selectedCoordinates);
     }
   }, [route.params]);
-
-  const [pickedLocation, setPickedLocation] = useState({});
-  const [isFetching, setIsFetching] = useState(false);
 
   const verifyPermissions = async () => {
     const result = await Permissions.askAsync(Permissions.LOCATION);
