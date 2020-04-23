@@ -1,11 +1,24 @@
 import * as FileSystem from "expo-file-system";
 import { insertLocation, fetchLocations } from "../../database";
+import { KEY } from "react-native-dotenv";
 
 export const ADD_LOCATION = "ADD_LOCATION";
 export const SHOW_LOCATIONS = "SHOW_LOCATIONS";
 
-export const addLocation = (title, selectedImage) => {
+export const addLocation = (title, selectedImage, selectedLocation) => {
   return async (dispatch) => {
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${selectedLocation.latitude},${selectedLocation.longitude}&key=${KEY}`
+    );
+
+    if (!response.ok) {
+      throw new Error("address api fetching error");
+    }
+
+    const responseData = await response.json();
+
+    console.log(responseData);
+
     const fileName = selectedImage.split("/").pop();
     const newPath = FileSystem.documentDirectory + fileName;
 
@@ -18,8 +31,8 @@ export const addLocation = (title, selectedImage) => {
         title,
         newPath,
         "Dummy address",
-        15.6,
-        12.3
+        selectedLocation.latitude,
+        selectedLocation.longitude
       );
       console.log("what is databaseresult", databaseResult);
       dispatch({
@@ -28,6 +41,10 @@ export const addLocation = (title, selectedImage) => {
           id: databaseResult.insertId,
           title: title,
           image: newPath,
+          coords: {
+            latitude: selectedLocation.latitude,
+            longitude: selectedLocation.longitude,
+          },
         },
       });
     } catch (error) {

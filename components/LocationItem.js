@@ -2,13 +2,15 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 const LocationItem = (props) => {
-  // console.log("what is props", props);
+  console.log("what is props", props);
   return (
     <TouchableOpacity onPress={props.onSelect} style={styles.loactionItem}>
       <Image style={styles.image} source={{ uri: props.image }} />
       <View style={styles.infoContainer}>
         <Text style={styles.title}>{props.title}</Text>
         <Text style={styles.address}>{props.address}</Text>
+        <Text style={styles.address}>{props.latitude}</Text>
+        <Text style={styles.address}>{props.longitude}</Text>
       </View>
     </TouchableOpacity>
   );

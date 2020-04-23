@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Button } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 export default function MapPage(props) {
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -36,9 +36,11 @@ export default function MapPage(props) {
   return (
     <MapView
       style={styles.map}
-      provider={MapView.PROVIDER_GOOGLE}
+      provider={PROVIDER_GOOGLE}
       region={mapRegion}
       onPress={selectLocationHandler}
+      showsUserLocation
+      showsMyLocationButton
     >
       {markerCoordinates && (
         <Marker title="Choose location" coordinate={markerCoordinates}></Marker>
