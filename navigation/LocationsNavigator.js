@@ -22,7 +22,14 @@ export default function LocationsNavigator() {
             headerTitle: "All Locations",
           }}
         />
-        <Stack.Screen name="LocationDetail" component={LocationDetailPage} />
+        <Stack.Screen
+          name="LocationDetail"
+          component={LocationDetailPage}
+          options={({ route }) => ({
+            title: route.params.locationTitle,
+            headerBackTitle: null,
+          })}
+        />
         <Stack.Screen
           name="AddLocation"
           component={AddLocationPage}
