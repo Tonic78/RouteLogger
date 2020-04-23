@@ -13,7 +13,7 @@ import TakeImage from "../components/TakeImage";
 import PickLocation from "../components/PickLocation";
 
 export default function AddLocationsPage(props) {
-  // console.log("what is ADD PAGE props.route", props.route);
+  // console.log("what is ADD PAGE selectedLocation", selectedLocation);
 
   const [title, setTitle] = useState("");
   const [selectedImage, setSelectedImage] = useState();
@@ -47,6 +47,16 @@ export default function AddLocationsPage(props) {
     props.navigation.goBack();
   };
 
+  const getUserLocationHandler = (location) => {
+    // console.log("GETUSERLOCATIONHANDLER", location);
+    const userCoords = {
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+    };
+    // console.log("what is ADD LOC userCoords", userCoords);
+    setSelectedLocation(userCoords);
+  };
+
   return (
     <ScrollView>
       <View style={styles.form}>
@@ -57,7 +67,11 @@ export default function AddLocationsPage(props) {
           value={title}
         />
         <TakeImage onImageTaken={imageTakenHandler} />
-        <PickLocation navigation={props.navigation} route={props.route} />
+        <PickLocation
+          // navigation={props.navigation}
+          // route={props.route}
+          onGetLocation={getUserLocationHandler}
+        />
         <Button title="Save Location" onPress={saveLocationHandler} />
       </View>
     </ScrollView>
