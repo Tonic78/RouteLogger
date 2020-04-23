@@ -13,7 +13,7 @@ import TakeImage from "../components/TakeImage";
 import PickLocation from "../components/PickLocation";
 
 export default function AddLocationsPage(props) {
-  // console.log("what is addlocation props", props.route);
+  // console.log("what is addlocation props.route", props.route);
 
   const [title, setTitle] = useState("");
   const [selectedImage, setSelectedImage] = useState();
@@ -29,6 +29,8 @@ export default function AddLocationsPage(props) {
       setSelectedLocation(pickedCoordinates);
     }
   }, [props.params]);
+
+  // console.log("what is ADDLOCATION selectedLocation", selectedLocation);
 
   const dispatch = useDispatch();
 

@@ -6,6 +6,8 @@ export const ADD_LOCATION = "ADD_LOCATION";
 export const SHOW_LOCATIONS = "SHOW_LOCATIONS";
 
 export const addLocation = (title, selectedImage, selectedLocation) => {
+  // console.log("what is ACTIONS selectedLocation", selectedLocation);
+
   return async (dispatch) => {
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${selectedLocation.latitude},${selectedLocation.longitude}&key=${KEY}`
@@ -16,9 +18,9 @@ export const addLocation = (title, selectedImage, selectedLocation) => {
     }
 
     const responseData = await response.json();
+    // console.log("what is ADDRESS API responseData", responseData);
 
-    console.log(responseData);
-
+    const address = responseData.results[0].formatted_address;
     const fileName = selectedImage.split("/").pop();
     const newPath = FileSystem.documentDirectory + fileName;
 
@@ -30,17 +32,18 @@ export const addLocation = (title, selectedImage, selectedLocation) => {
       const databaseResult = await insertLocation(
         title,
         newPath,
-        "Dummy address",
+        address,
         selectedLocation.latitude,
         selectedLocation.longitude
       );
-      console.log("what is databaseresult", databaseResult);
+      // console.log("what is databaseresult", databaseResult);
       dispatch({
         type: ADD_LOCATION,
         locationData: {
           id: databaseResult.insertId,
           title: title,
           image: newPath,
+          address: address,
           coords: {
             latitude: selectedLocation.latitude,
             longitude: selectedLocation.longitude,
