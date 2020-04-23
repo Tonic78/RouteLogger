@@ -4,13 +4,11 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 const LocationItem = (props) => {
   // console.log("what is LocationItem props", props);
   return (
-    <TouchableOpacity onPress={props.onSelect} style={styles.loactionItem}>
+    <TouchableOpacity onPress={props.onSelect} style={styles.locationItem}>
       <Image style={styles.image} source={{ uri: props.image }} />
       <View style={styles.infoContainer}>
         <Text style={styles.title}>{props.title}</Text>
         <Text style={styles.address}>{props.address}</Text>
-        <Text style={styles.address}>{props.latitude}</Text>
-        <Text style={styles.address}>{props.longitude}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -28,7 +26,7 @@ const styles = StyleSheet.create({
   image: {
     width: 70,
     height: 70,
-    borderRadius: 35,
+    borderRadius: 5,
     backgroundColor: "#ccc",
     borderColor: "black",
     borderWidth: 1,

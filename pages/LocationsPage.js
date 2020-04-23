@@ -31,7 +31,7 @@ export default function LocationsPage(props) {
           <LocationItem
             image={itemData.item.imageUri}
             title={itemData.item.title}
-            // address={null}
+            address={itemData.item.address}
             latitude={itemData.item.latitude}
             longitude={itemData.item.longitude}
             onSelect={() => {

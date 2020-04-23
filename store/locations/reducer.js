@@ -15,6 +15,7 @@ export default (state = initialState, action) => {
               location.id.toString(),
               location.title,
               location.imageUri,
+              location.address,
               location.latitude,
               location.longitude
             )
@@ -25,6 +26,7 @@ export default (state = initialState, action) => {
         action.locationData.id.toString(),
         action.locationData.title,
         action.locationData.image,
+        action.locationData.address,
         action.locationData.coords.latitude,
         action.locationData.coords.longitude
       );

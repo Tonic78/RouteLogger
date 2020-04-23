@@ -1,8 +1,9 @@
 class Location {
-  constructor(id, title, imageUri, latitude, longitude) {
+  constructor(id, title, imageUri, address, latitude, longitude) {
     this.id = id;
     this.title = title;
     this.imageUri = imageUri;
+    this.address = address;
     this.latitude = latitude;
     this.longitude = longitude;
   }

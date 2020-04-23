@@ -16,6 +16,8 @@ export default function LocationDetailPage(props) {
   const locationCoords = {
     latitude: selectedLocation.latitude,
     longitude: selectedLocation.longitude,
+    latitudeDelta: 0.06,
+    longitudeDelta: 0.04,
   };
 
   return (
@@ -23,17 +25,13 @@ export default function LocationDetailPage(props) {
       <Image source={{ uri: selectedLocation.imageUri }} style={styles.image} />
       <View style={styles.locationContainer}>
         <View style={styles.addressContainer}>
-          <Text style={styles.address}>
-            {locationCoords.latitude}
-            {" / "}
-            {locationCoords.longitude}
-          </Text>
+          <Text style={styles.address}>{selectedLocation.address}</Text>
         </View>
         <MapView
           style={styles.mapPreview}
-          provider={PROVIDER_GOOGLE}
+          // provider={PROVIDER_GOOGLE}
           region={locationCoords}
-          showsMyLocationButton
+          // showsMyLocationButton
         >
           <Marker title="Picked Location" coordinate={locationCoords} />
         </MapView>
