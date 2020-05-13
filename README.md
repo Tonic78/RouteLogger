@@ -4,10 +4,15 @@ With this mobile app a person can log all the locations of great climbing spots 
 
 ## Table of contents
 
+- [App Screenshots](#app-screenshots)
 - [Technology used](#technology-used)
 - [Goals for this project](#goals-for-this-project)
 - [User Stories](#user-stories)
 - [Git](#git)
+
+## App Screenshots
+
+<img width="250" alt="RouteLoggerStartscreen" src="https://user-images.githubusercontent.com/60692179/81807735-e7e01000-951e-11ea-821b-90215bcdeb2a.png">
 
 ## Technology used
 
