@@ -12,7 +12,11 @@ With this mobile app a person can log all the locations of great climbing spots 
 
 ## App Screenshots
 
-<img width="250" alt="RouteLoggerStartscreen" src="https://user-images.githubusercontent.com/60692179/81807735-e7e01000-951e-11ea-821b-90215bcdeb2a.png">
+<img width = "250" alt="SplashScreen" src="https://user-images.githubusercontent.com/60692179/81903951-da7c6180-95c2-11ea-9901-134949a1c79e.jpg">
+<img width = "250" alt="LocationsList" src="https://user-images.githubusercontent.com/60692179/81903978-e405c980-95c2-11ea-9ca5-9c373f0958da.PNG">
+<img width = "250" alt="CameraPermission" src="https://user-images.githubusercontent.com/60692179/81903996-e9fbaa80-95c2-11ea-8c3a-bc5bed90e2a4.PNG">
+<img width = "250" alt="MapPage" src="https://user-images.githubusercontent.com/60692179/81904014-f08a2200-95c2-11ea-95d2-c2f5b516519b.PNG">
+<img width = "250" alt="AddLocation" src="https://user-images.githubusercontent.com/60692179/81904803-1237d900-95c4-11ea-9fde-9f10d2b1e23f.PNG">
 
 ## Technology used
 
@@ -21,6 +25,7 @@ With this mobile app a person can log all the locations of great climbing spots 
 - React Navigation
 - Redux
 - Google API's
+- SQLite
 
 ## Goals for this project
 
